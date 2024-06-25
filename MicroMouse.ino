@@ -1,45 +1,18 @@
 #define TRIG_PIN 2
 #define ECHO_PIN 3
 #define LDR_PIN A0
-#define MOTOR_LEFT_PWM 9  // EN_A
-#define MOTOR_RIGHT_PWM 10  // EN_B
-#define MOTOR_LEFT_DIR_1 7  // IN1
-#define MOTOR_LEFT_DIR_2 8  // IN2
-#define MOTOR_RIGHT_DIR_1 12  // IN3
-#define MOTOR_RIGHT_DIR_2 13  // IN4
-
+#define MOTOR_LEFT_PWM 9
+#define MOTOR_RIGHT_PWM 10
+#define MOTOR_LEFT_DIR 7
+#define MOTOR_RIGHT_DIR 8
 
 void setup() {
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
   pinMode(MOTOR_LEFT_PWM, OUTPUT);
   pinMode(MOTOR_RIGHT_PWM, OUTPUT);
-  pinMode(MOTOR_LEFT_DIR_1, OUTPUT);
-  pinMode(MOTOR_LEFT_DIR_2, OUTPUT);
-  pinMode(MOTOR_RIGHT_DIR_1, OUTPUT);
-  pinMode(MOTOR_RIGHT_DIR_2, OUTPUT);
-  Serial.begin(9600);
-}
-
-#define TRIG_PIN 2
-#define ECHO_PIN 3
-#define LDR_PIN A0
-#define MOTOR_LEFT_PWM 9  // EN_A
-#define MOTOR_RIGHT_PWM 10  // EN_B
-#define MOTOR_LEFT_DIR_1 7  // IN1
-#define MOTOR_LEFT_DIR_2 8  // IN2
-#define MOTOR_RIGHT_DIR_1 12  // IN3
-#define MOTOR_RIGHT_DIR_2 13  // IN4
-
-void setup() {
-  pinMode(TRIG_PIN, OUTPUT);
-  pinMode(ECHO_PIN, INPUT);
-  pinMode(MOTOR_LEFT_PWM, OUTPUT);
-  pinMode(MOTOR_RIGHT_PWM, OUTPUT);
-  pinMode(MOTOR_LEFT_DIR_1, OUTPUT);
-  pinMode(MOTOR_LEFT_DIR_2, OUTPUT);
-  pinMode(MOTOR_RIGHT_DIR_1, OUTPUT);
-  pinMode(MOTOR_RIGHT_DIR_2, OUTPUT);
+  pinMode(MOTOR_LEFT_DIR, OUTPUT);
+  pinMode(MOTOR_RIGHT_DIR, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -62,6 +35,7 @@ void loop() {
     moveForward();
   }
 
+  // Add more logic for LDR if needed
 }
 
 long measureDistance() {
@@ -78,10 +52,8 @@ long measureDistance() {
 }
 
 void moveForward() {
-  digitalWrite(MOTOR_LEFT_DIR_1, HIGH);
-  digitalWrite(MOTOR_LEFT_DIR_2, LOW);
-  digitalWrite(MOTOR_RIGHT_DIR_1, HIGH);
-  digitalWrite(MOTOR_RIGHT_DIR_2, LOW);
+  digitalWrite(MOTOR_LEFT_DIR, HIGH);
+  digitalWrite(MOTOR_RIGHT_DIR, HIGH);
   analogWrite(MOTOR_LEFT_PWM, 200);
   analogWrite(MOTOR_RIGHT_PWM, 200);
 }
@@ -92,19 +64,15 @@ void stopMotors() {
 }
 
 void turnRight() {
-  digitalWrite(MOTOR_LEFT_DIR_1, HIGH);
-  digitalWrite(MOTOR_LEFT_DIR_2, LOW);
-  digitalWrite(MOTOR_RIGHT_DIR_1, LOW);
-  digitalWrite(MOTOR_RIGHT_DIR_2, HIGH);
+  digitalWrite(MOTOR_LEFT_DIR, HIGH);
+  digitalWrite(MOTOR_RIGHT_DIR, LOW);
   analogWrite(MOTOR_LEFT_PWM, 200);
   analogWrite(MOTOR_RIGHT_PWM, 200);
 }
 
 void turnLeft() {
-  digitalWrite(MOTOR_LEFT_DIR_1, LOW);
-  digitalWrite(MOTOR_LEFT_DIR_2, HIGH);
-  digitalWrite(MOTOR_RIGHT_DIR_1, HIGH);
-  digitalWrite(MOTOR_RIGHT_DIR_2, LOW);
+  digitalWrite(MOTOR_LEFT_DIR, LOW);
+  digitalWrite(MOTOR_RIGHT_DIR, HIGH);
   analogWrite(MOTOR_LEFT_PWM, 200);
   analogWrite(MOTOR_RIGHT_PWM, 200);
 }
