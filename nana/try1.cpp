@@ -1,3 +1,65 @@
+// flood fill - dfs test
+/*
+
+#define WIDTH 5
+#define HEIGHT 5
+
+int maze[WIDTH][HEIGHT] = {
+    {0, 0, 0, 0, 0},
+    {0, 1, 1, 1, 0},
+    {0, 1, 0, 1, 0},
+    {0, 1, 0, 1, 0},
+    {0, 0, 0, 0, 0}
+};
+
+void setup() {
+    pinMode(LED_BUILTIN, OUTPUT);  // Initialize the LED pin
+    Serial.begin(9600);
+    
+    floodFillDFS(0, 0, 2);  // Start filling from the top-left corner with value 2
+
+    // Print the maze to the serial monitor
+    for (int i = 0; i < WIDTH; i++) {
+        for (int j = 0; j < HEIGHT; j++) {
+            Serial.print(maze[i][j]);
+            Serial.print(" ");
+        }
+        Serial.println();
+    }
+}
+
+void loop() {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);  // Wait for 1000 milliseconds
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);  // Wait for 1000 milliseconds
+}
+
+void floodFillDFS(int x, int y, int fillValue) {
+    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) return;  // Out of bounds
+    if (maze[x][y] != 0) return;  // Not empty or already filled
+
+    maze[x][y] = fillValue;  // Fill the cell
+
+    // Recursive calls for the four directions
+    floodFillDFS(x + 1, y, fillValue);  // Down
+    floodFillDFS(x - 1, y, fillValue);  // Up
+    floodFillDFS(x, y + 1, fillValue);  // Right
+    floodFillDFS(x, y - 1, fillValue);  // Left
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
 #define WIDTH 16
 #define HEIGHT 16
 
